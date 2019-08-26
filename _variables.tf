@@ -1,7 +1,9 @@
 variable "account_name" {
   description = "Name for this account (slug)"
 }
-
+variable "account_alias" {
+  description = "Alias for this account"
+}
 variable "metadata" {
   description = "Metadata provided by GSuite"
 }
