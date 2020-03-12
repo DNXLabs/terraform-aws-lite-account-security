@@ -1,7 +1,7 @@
 
 data "aws_iam_policy_document" "assume_role_ci_deploy_ec2" {
-  statement = {
-    principals = {
+  statement {
+    principals {
       type = "Service"
 
       identifiers = [
@@ -17,12 +17,12 @@ data "aws_iam_policy_document" "assume_role_ci_deploy_ec2" {
 
 resource "aws_iam_role" "ci_deploy_ec2" {
   name               = "ci-deploy-ec2"
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_ci_deploy_ec2.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_ci_deploy_ec2.json
 }
 
 resource "aws_iam_instance_profile" "ci_deploy_ec2" {
   name = "ci-deploy"
-  role = "${aws_iam_role.ci_deploy_ec2.name}"
+  role = aws_iam_role.ci_deploy_ec2.name
 }
 
 resource "aws_iam_user" "ci_deploy" {
@@ -38,11 +38,11 @@ data "aws_iam_policy_document" "ci_deploy_policy" {
 
 resource "aws_iam_role_policy" "ci_deploy" {
   name   = "ci-deploy"
-  role   = "${aws_iam_role.ci_deploy_ec2.id}"
-  policy = "${data.aws_iam_policy_document.ci_deploy_policy.json}"
+  role   = aws_iam_role.ci_deploy_ec2.id
+  policy = data.aws_iam_policy_document.ci_deploy_policy.json
 }
 
 resource "aws_iam_user_policy_attachment" "ci_admin" {
-  user       = "${aws_iam_user.ci_deploy.name}"
+  user       = aws_iam_user.ci_deploy.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }

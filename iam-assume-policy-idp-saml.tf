@@ -1,10 +1,10 @@
 data "aws_iam_policy_document" "saml" {
-  statement = {
-    principals = {
+  statement {
+    principals {
       type = "Federated"
 
       identifiers = [
-        "${aws_iam_saml_provider.saml.arn}",
+        aws_iam_saml_provider.saml.arn,
       ]
     }
 
@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "saml" {
       "sts:AssumeRoleWithSAML",
     ]
 
-    condition = {
+    condition {
       test     = "StringEquals"
       variable = "SAML:aud"
 
