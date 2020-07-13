@@ -4,6 +4,7 @@
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-lite-account-security)](https://github.com/DNXLabs/terraform-aws-lite-account-security/blob/master/LICENSE)
 
 <!--- BEGIN_TF_DOCS --->
+
 ## Requirements
 
 | Name | Version |
