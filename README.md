@@ -3,6 +3,19 @@
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-lite-account-security/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-lite-account-security/actions)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-lite-account-security)](https://github.com/DNXLabs/terraform-aws-lite-account-security/blob/master/LICENSE)
 
+Terraform-aws-lite-account-security is a module that creates IAM roles for federated users to assume from an IdP account.
+
+The following resources will be created:
+ - Identity and Access Management roles:
+   - `idp-admin` with full admin permissions
+   - `idp-read-only` with read-only permissions
+ - An alias for this account
+
+In addition you have the options to:
+ - Set the Maximum CLI/API session duration.
+    - The default value is 43200 	
+ - Create admin and read-only roles trusting IDP account
+
 <!--- BEGIN_TF_DOCS --->
 
 ## Requirements
