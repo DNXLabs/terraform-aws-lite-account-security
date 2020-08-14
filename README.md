@@ -5,14 +5,13 @@
 
 Terraform-aws-lite-account-security is a module that creates IAM roles for federated users to assume from an IdP account.
 
-This modules creates the following resources:
+The following resources will be created:
  - Identity and Access Management roles:
    - `idp-admin` with full admin permissions
    - `idp-read-only` with read-only permissions
  - An alias for this account
 
-
-The following resources will be created:
+In addition you have the options to:
  - Set the Maximum CLI/API session duration.
     - The default value is 43200 	
  - Create admin and read-only roles trusting IDP account
